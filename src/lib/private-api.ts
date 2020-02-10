@@ -47,7 +47,7 @@ export class PrivateApi extends Api {
     super(config, options);
     this.apiKey = config.apiKey;
     this.apiSecret = config.apiSecret;
-    this.nonce = new Date().getTime();
+    this.nonce = 1;
   }
 
   public getAssets(): Promise<Response<AssetsResponse>> {
@@ -116,7 +116,7 @@ export class PrivateApi extends Api {
   }
 
   private makeHeader(uri: string): any {
-    this.nonce++;
+    this.nonce = new Date.getTime();
     const message: string = this.nonce.toString().concat(uri);
     return {
       'Content-Type': 'application/json',
