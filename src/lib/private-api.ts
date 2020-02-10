@@ -116,7 +116,7 @@ export class PrivateApi extends Api {
   }
 
   private makeHeader(uri: string): any {
-    this.nonce = new Date.getTime();
+    this.nonce = new Date().getTime();
     const message: string = this.nonce.toString().concat(uri);
     return {
       'Content-Type': 'application/json',
